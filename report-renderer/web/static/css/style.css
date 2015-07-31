@@ -1,0 +1,20 @@
+.match{
+	background-color:#FFFF66;
+}
+
+.match.active{
+	background-color:#FF99FF;
+}
+
+.statistics-table td{
+	padding:5px;
+}
+
+.document{
+	word-wrap:break-word;
+}
+
+.document-container{
+	height:600px;
+	overflow-y:auto;
+}

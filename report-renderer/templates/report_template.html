@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="">
+
+    <title></title>
+
+    <link href="../web/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../web/static/css/style.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../web/static/js/bootstrap.min.js"></script>
+    <script src="../web/static/js/tinycolor.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          
+          <a class="navbar-brand" href="#">Coverage report</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h2>Document {{data.userText.id}} report</h2>
+        <table class="table table-hover statistics-table">
+        <tr><td>Overall Coverage</td><td>{{data.statistics.main.overall|round(2, 'ceil')}} %</td></tr>
+        <tr><td>Processing Time</td><td>{{data.meta.time|round(2, 'ceil')}} s</td></tr>
+        <tr><td>Algorithm Name</td><td>{{data.meta.compareAlgorithmName}}</td></tr>
+        <tr><td>Pattern Algorithm Name</td><td>{{data.meta.patternAlgorithmName}}</td></tr>
+        <tr><td>Threads</td><td>{{data.meta.noThreads}}</td></tr>
+        <tr><td>No. Characters</td><td>{{data.statistics.main.userDocLength}}</td></tr>
+        {%for id, amount in data.statistics.match|dictsort(by="value")|reverse%}
+        <tr><td>{{id}}</td><td>{{amount}} characters ({{(amount*100/data.statistics.main.userDocLength)|round(3, 'floor') }}%)</td></tr>
+        {%endfor%}
+        
+        </table>
+
+        
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 document-container">
+          <h2>User Document</h2>
+          <p class="document" id="userDocument">{{data.userText.text}}</p>
+          
+        </div>
+        <div class="col-md-6 document-container">
+          <h2>Database Document</h2>
+          <p class="document" id="dbDocument">
+            
+          </p>
+       </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>jakubkost@gmail.com</p>
+      </footer>
+    </div> <!-- /container -->
+
+    <script type="text/javascript">
+    var matched = []
+    $(document).ready(function(){
+    //createMatchedList()
+    //getUserDocument()
+     $('.match').tooltip()
+    })
+    
+
+    function getDocument(dbId){
+      var result = []
+      var n = 200
+      while (result.length < n)
+        result.push(dbId)
+      return result.join('')
+    }
+    String.prototype.insertAt=function(index, string) { 
+    return this.substr(0, index) + string + this.substr(index);
+  }
+
+  $('.match').click(function(e){
+    match = e.target
+    $('.match').removeClass('active')
+    $(match).addClass('active')
+    ds = $(match).attr('ds')
+    de = $(match).attr('de')
+    id = $(match).attr('docid')
+
+    $.ajax({
+      type: "POST",
+      crossDomain: true,
+      error: function() { alert('Failed ..'); },
+      url: "http://localhost:8080/spider-gui/db/getRawFile?id="+id,
+      headers: {'Host': 'localhost:8080'},
+      success: function(data){
+         doc = highlightDocument(data, [{ds: ds, de: de}])
+          $('#dbDocument').html(doc)
+      }
+    });
+    
+  })
+
+  function highlightDocument(doc, matchList){
+      matchList.forEach(function(m){
+        doc = doc.insertAt(m.de, '</span>')
+        doc = doc.insertAt(m.ds, '<span class="match">')
+      })
+      return doc
+  }
+
+
+    </script>
+  </body>
+</html>
