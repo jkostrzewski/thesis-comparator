@@ -22,9 +22,8 @@ namespace TestApp1.Algorithm
                 foreach (int i in indexes)
                 {
                     //Console.Out.WriteLine(dbText.Substring(i, slice.Length));
-                    ResultIndex resultIndex = new ResultIndex(resultIndexId, sliceIndex * slice.Length, (sliceIndex + 1) * slice.Length, i, i + slice.Length);
+                    interpreter.addIndex(resultIndexId, sliceIndex * slice.Length, (sliceIndex + 1) * slice.Length, i, i + slice.Length);
                     resultIndexId++;
-                    interpreter.addIndex(resultIndex);
                 }
                 sliceIndex++;
             }

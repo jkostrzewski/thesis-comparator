@@ -20,11 +20,10 @@ namespace TestApp1.Algorithm
                 var indexes = r.Split(';').Where(x => x != "").Select(x => Convert.ToInt32(x)).ToList();
                 foreach (int i in indexes)
                 {
-                    ResultIndex resultIndex = new ResultIndex(resultIndexId, sliceIndex, sliceIndex + slice.Length, i, i + slice.Length);
+                    interpreter.addIndex(resultIndexId, sliceIndex, sliceIndex + slice.Length, i, i + slice.Length);
                     resultIndexId++;
                    // Console.Out.WriteLine();
                     //Console.Out.WriteLine(slice);
-                    interpreter.addIndex(resultIndex);
                 }
                 sliceIndex = sliceIndex + slice.Length + 2;
             }

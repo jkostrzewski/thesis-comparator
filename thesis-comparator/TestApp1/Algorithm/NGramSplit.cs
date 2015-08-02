@@ -35,11 +35,10 @@ namespace TestApp1.Algorithm
                 foreach (int i in indexes)
                 {
                     //Console.Out.WriteLine(slice);
-                    ResultIndex resultIndex = new ResultIndex(resultIndexId, sliceIndex + 1, sliceIndex + slice.Length+1 , i , i + slice.Length );
+                    interpreter.addIndex(resultIndexId, sliceIndex + 1, sliceIndex + slice.Length+1 , i , i + slice.Length );
                     resultIndexId++;
                     // Console.Out.WriteLine();
-                    //Console.Out.WriteLine(slice);
-                    interpreter.addIndex(resultIndex);
+                    //Console.Out.WriteLine(slice);                    
                 }
                 sliceIndex = sliceIndex + skipValue + 1;
             }

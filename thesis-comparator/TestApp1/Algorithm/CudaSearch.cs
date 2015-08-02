@@ -45,7 +45,7 @@ namespace TestApp1.Algorithm
             findWithCuda.GridDimensions = blocks;
             findWithCuda.BlockDimensions = threads;
             Console.Out.WriteLine("before search");
-            foreach (String slice in Splitter.SplitByNGram(userText, n))
+            foreach (String slice in Splitter.SplitByWindow(userText, n))
             {
                 if (slice == "")
                 {
@@ -77,11 +77,11 @@ namespace TestApp1.Algorithm
                 foreach (int i in indexes)
                 {
                    // Console.Out.WriteLine(slice);
-                    ResultIndex resultIndex = new ResultIndex(resultIndexId, sliceIndex + 1, sliceIndex + slice.Length + 1, i, i + slice.Length);
+                    interpreter.addIndex(resultIndexId, sliceIndex + 1, sliceIndex + slice.Length + 1, i, i + slice.Length);
                     resultIndexId++;
                     // Console.Out.WriteLine();
                     //Console.Out.WriteLine(slice);
-                    interpreter.addIndex(resultIndex);
+                    
                 }
                 sliceIndex = sliceIndex + skipValue + 1;
             }

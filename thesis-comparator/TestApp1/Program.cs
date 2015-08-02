@@ -57,6 +57,7 @@ namespace TestApp1
                 String dbText = Utils.normalizeText(i.GetDocument(id));
                 String name = i.GetDocumentName(id);
                 ResultInterpreterOpt interpreter = new ResultInterpreterOpt(dbText, userText);
+                interpreter.isBenchmark = true;
              
                 interpreter = compareAlgorithm.check(interpreter, dbText, userText);
                

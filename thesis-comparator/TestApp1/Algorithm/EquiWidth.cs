@@ -9,7 +9,7 @@ namespace TestApp1.Algorithm
 {
     class EquiWidth : CompareAlgorithm
     {
-        private int width = 40;
+        private int width = 10;
         public override ResultInterpreterOpt check(ResultInterpreterOpt interpreter, String dbText, String userText)
         {
             int sliceIndex = 0;
@@ -22,9 +22,8 @@ namespace TestApp1.Algorithm
                 foreach (int i in indexes)
                 {
                     //Console.Out.WriteLine(dbText.Substring(i, slice.Length));
-                    ResultIndex resultIndex = new ResultIndex(resultIndexId, sliceIndex, sliceIndex + slice.Length, i, i + slice.Length);
+                    interpreter.addIndex(resultIndexId, sliceIndex, sliceIndex + slice.Length, i, i + slice.Length);
                     resultIndexId++;
-                    interpreter.addIndex(resultIndex);
                 }
                 sliceIndex++;
             }

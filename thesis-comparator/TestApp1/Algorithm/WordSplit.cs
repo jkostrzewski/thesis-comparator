@@ -27,11 +27,10 @@ namespace TestApp1.Algorithm
                 //Console.Out.WriteLine(indexes.Count)
                 foreach (int i in indexes)
                 {
-                    ResultIndex resultIndex = new ResultIndex(resultIndexId, sliceIndex+1, sliceIndex + slice.Length+1, i+1, i+slice.Length+1);
+                    interpreter.addIndex(resultIndexId, sliceIndex+1, sliceIndex + slice.Length+1, i+1, i+slice.Length+1);
                     resultIndexId++;
                     // Console.Out.WriteLine();
                     //Console.Out.WriteLine(slice);
-                    interpreter.addIndex(resultIndex);
                 }
                 sliceIndex = sliceIndex + slice.Length+1;
             }

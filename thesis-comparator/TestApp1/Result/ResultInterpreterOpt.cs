@@ -11,6 +11,7 @@ namespace TestApp1.Result
          public List<ResultIndex> indexes {get;set;}
         private String dbText, userText;
         public int minNoWords = 3;
+        public bool isBenchmark;
 
         public ResultInterpreterOpt(String dbText, String userText)
         {
@@ -21,6 +22,15 @@ namespace TestApp1.Result
 
         public void addIndex(ResultIndex i)
         {
+            this.indexes.Add(i);
+        }
+
+        public void addIndex(int resultIndexId, int us, int ue, int ds, int de)
+        {
+            if (isBenchmark){
+                return;
+            }
+            var i = new ResultIndex(resultIndexId, us, ue, ds, de);
             this.indexes.Add(i);
         }
 
