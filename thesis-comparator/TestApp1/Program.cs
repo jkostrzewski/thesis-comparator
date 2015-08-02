@@ -24,7 +24,7 @@ namespace TestApp1
             String compareAlgName = "SentenceSplit";
             int noThreads = 1;
             
-            DbInterface i = new DbInterface("localhost");
+            DbInterface i = new DbInterface("192.168.9.103");
             CompareAlgorithm compareAlgorithm;
             if (args.Length > 0)
             {

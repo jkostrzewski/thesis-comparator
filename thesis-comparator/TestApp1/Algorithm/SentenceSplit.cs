@@ -14,7 +14,7 @@ namespace TestApp1.Algorithm
         {
             int sliceIndex = 0;
             int resultIndexId = 0;
-            foreach (String slice in SplitBySentence(userText))
+            foreach (String slice in Splitter.SplitBySentence(userText))
             {   
                 String r = findPattern(dbText, slice);
                 var indexes = r.Split(';').Where(x => x != "").Select(x => Convert.ToInt32(x)).ToList();
@@ -33,22 +33,5 @@ namespace TestApp1.Algorithm
             return interpreter;
         }
 
-        public IEnumerable<string> SplitBySentence(string str)
-        {
-            string[] stringSeparators = new string[] {". "};
-            String[] blacklist = {""};
-            foreach (String sentence in str.Split(stringSeparators, StringSplitOptions.RemoveEmptyEntries))
-            {
-                if (!blacklist.Contains(sentence)) {
-                    //Console.Out.WriteLine(sentence);
-                    yield return sentence;
-                }
-                else
-                {
-                    Console.Out.WriteLine("|"+sentence+"|");
-                    continue;
-                }
-            }
-        }
     }
 }

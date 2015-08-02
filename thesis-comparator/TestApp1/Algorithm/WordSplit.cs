@@ -14,7 +14,7 @@ namespace TestApp1.Algorithm
         {
             int sliceIndex = 0;
             int resultIndexId = 0;
-            foreach (String slice in SplitByWord(userText))
+            foreach (String slice in Splitter.SplitByNGram(userText, 1))
             {        
                 if (slice == "")
                 {
@@ -38,25 +38,6 @@ namespace TestApp1.Algorithm
 
             interpreter.getNormalizedIndexes();
             return interpreter;
-        }
-
-        public IEnumerable<string> SplitByWord(string str)
-        {
-            string[] stringSeparators = new string[] {" "};
-            String[] blacklist = {"",  " "};
-            foreach (String sentence in str.Split(stringSeparators, StringSplitOptions.RemoveEmptyEntries))
-            {
-                if (!blacklist.Contains(sentence) )
-                {
-                    yield return sentence;
-                }
-                else
-                {
-                    
-                    
-                    yield return "";
-                }
-            }
         }
     }
 }

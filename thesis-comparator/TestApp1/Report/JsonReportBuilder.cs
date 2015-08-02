@@ -17,7 +17,7 @@ namespace TestApp1.Report
         
         Object addJsonResultLock = new Object();
         static String timestamp = null;
-        static String path = @"C:\Users\kuba\Desktop\praca_magisterska\report-renderer\";
+        static String path = @"E:\kuba\mgr\thesis-comparator\report-renderer\";
         String jsonFilePath;
        
 

@@ -12,10 +12,11 @@ namespace TestApp1.Algorithm
 
         public override ResultInterpreterOpt check(ResultInterpreterOpt interpreter, String dbText, String userText)
         {
-            int n = 3;
+            int n = 10;
             int sliceIndex = 0;
             int resultIndexId = 0;
-            foreach (String slice in SplitByNGram(userText, n))
+            Console.Out.WriteLine("before search");
+            foreach (String slice in Splitter.SplitByNGram(userText, n))
             {
                 if (slice == "")
                 {
@@ -46,25 +47,6 @@ namespace TestApp1.Algorithm
             interpreter.getNormalizedIndexes();
             Console.Out.WriteLine("normalized");
             return interpreter;
-        }
-
-        public IEnumerable<string> SplitByNGram(string str, int n)
-        {
-            string[] stringSeparators = new string[] {" "};
-            String[] blacklist = { "", " " };
-            var splitedString = str.Split(stringSeparators, StringSplitOptions.RemoveEmptyEntries).ToList<String>();
-            for (int i = 0; i < splitedString.Count - n+1; i++)
-            {
-                //Console.Out.WriteLine(n);
-                //Console.Out.WriteLine(string.Join(" ", splitedString.GetRange(0, n)));
-                //Console.Out.WriteLine(string.Join(" ", splitedString.GetRange(i, n)));
-               // Console.Out.WriteLine(string.Join(" ", splitedString.GetRange(0, 20)));
-                
-               // Console.ReadLine();
-                yield return string.Join(" ", splitedString.GetRange(i, n));
-
-            }
-
         }
     }
 }

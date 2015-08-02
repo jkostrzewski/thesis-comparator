@@ -14,7 +14,7 @@ namespace TestApp1.Algorithm
         {
             int sliceIndex = 0;
             int resultIndexId = 0;
-            foreach (String slice in SplitByWindow(userText))
+            foreach (String slice in Splitter.SplitByWindow(userText, this.width))
             {
                //Console.Out.WriteLine(slice);
                 String r = findPattern(dbText, slice);
@@ -31,14 +31,6 @@ namespace TestApp1.Algorithm
 
             interpreter.getNormalizedIndexes();
             return interpreter;
-        }
-
-        public IEnumerable<string> SplitByWindow(string str)
-        {
-            for (int index = 0; index < str.Length-this.width; index++)
-            {
-                yield return str.Substring(index, Math.Min(this.width, str.Length - index));
-            }
         }
     }
 }
