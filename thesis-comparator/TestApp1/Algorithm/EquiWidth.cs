@@ -9,7 +9,7 @@ namespace TestApp1.Algorithm
 {
     class EquiWidth : CompareAlgorithm
     {
-        private int width = 10;
+        private int width = 1000;
         public override ResultInterpreterOpt check(ResultInterpreterOpt interpreter, String dbText, String userText)
         {
             int sliceIndex = 0;

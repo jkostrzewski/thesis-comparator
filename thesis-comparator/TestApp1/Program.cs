@@ -41,7 +41,7 @@ namespace TestApp1
             {
                 compareAlgorithm = new SentenceSplit();
             }
-            var userId = "9dabbef3-8bcf-4b63-8424-d3ed1aa8392a";
+            var userId = "96a74851-c445-490a-80b9-70ef719c1f6f";
             var path = args[3];
             //String userText = Utils.normalizeText(Utils.getDocumentFromFile(path));
             String userText = Utils.normalizeText(i.GetDocument(userId));
@@ -57,7 +57,7 @@ namespace TestApp1
                 String dbText = Utils.normalizeText(i.GetDocument(id));
                 String name = i.GetDocumentName(id);
                 ResultInterpreterOpt interpreter = new ResultInterpreterOpt(dbText, userText);
-                interpreter.isBenchmark = true;
+                interpreter.isBenchmark = false;
              
                 interpreter = compareAlgorithm.check(interpreter, dbText, userText);
                
