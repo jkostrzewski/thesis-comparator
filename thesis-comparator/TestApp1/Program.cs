@@ -24,7 +24,7 @@ namespace TestApp1
             String compareAlgName = "SentenceSplit";
             int noThreads = 1;
             
-            DbInterface i = new DbInterface("localhost");
+            DbInterface i = new DbInterface("192.168.9.103");
             CompareAlgorithm compareAlgorithm;
             if (args.Length > 0)
             {
@@ -57,6 +57,7 @@ namespace TestApp1
                 String dbText = Utils.normalizeText(i.GetDocument(id));
                 String name = i.GetDocumentName(id);
                 ResultInterpreterOpt interpreter = new ResultInterpreterOpt(dbText, userText);
+                interpreter.isBenchmark = true;
              
                 interpreter = compareAlgorithm.check(interpreter, dbText, userText);
                

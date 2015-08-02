@@ -33,7 +33,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Algoritm_library">
-      <HintPath>..\..\..\..\..\Downloads\Algoritm_library.dll</HintPath>
+      <HintPath>..\..\Algoritm_library.dll</HintPath>
+    </Reference>
+    <Reference Include="CudaBitmapSource">
+      <HintPath>..\..\lib\ManagedCuda\Release\CudaBitmapSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CudaBlas">
+      <HintPath>..\..\lib\ManagedCuda\x64\Release\CudaBlas.dll</HintPath>
+    </Reference>
+    <Reference Include="CudaFFT">
+      <HintPath>..\..\lib\ManagedCuda\x64\Release\CudaFFT.dll</HintPath>
+    </Reference>
+    <Reference Include="CudaRand">
+      <HintPath>..\..\lib\ManagedCuda\x64\Release\CudaRand.dll</HintPath>
+    </Reference>
+    <Reference Include="CudaSolve">
+      <HintPath>..\..\lib\ManagedCuda\x64\Release\CudaSolve.dll</HintPath>
+    </Reference>
+    <Reference Include="CudaSparse">
+      <HintPath>..\..\lib\ManagedCuda\x64\Release\CudaSparse.dll</HintPath>
     </Reference>
     <Reference Include="IronPython">
       <HintPath>..\packages\IronPython.2.7.5\lib\Net45\IronPython.dll</HintPath>
@@ -46,6 +64,9 @@
     </Reference>
     <Reference Include="IronPython.Wpf">
       <HintPath>..\packages\IronPython.2.7.5\lib\Net45\IronPython.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ManagedCuda">
+      <HintPath>..\..\lib\ManagedCuda\Release\ManagedCuda.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Dynamic">
       <HintPath>..\packages\IronPython.2.7.5\lib\Net45\Microsoft.Dynamic.dll</HintPath>
@@ -79,6 +100,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NPP">
+      <HintPath>..\..\lib\ManagedCuda\x64\Release\NPP.dll</HintPath>
+    </Reference>
+    <Reference Include="NVRTC">
+      <HintPath>..\..\lib\ManagedCuda\x64\Release\NVRTC.dll</HintPath>
+    </Reference>
     <Reference Include="RazorEngine, Version=3.6.5.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\RazorEngine.3.6.5\lib\net45\RazorEngine.dll</HintPath>
@@ -99,12 +126,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithm\Algorithm.cs" />
+    <Compile Include="Algorithm\CudaSearch.cs" />
     <Compile Include="Algorithm\EquiWidth.cs" />
     <Compile Include="Algorithm\EquiWidthSkip.cs" />
     <Compile Include="Algorithm\NGramSplit.cs" />
     <Compile Include="Algorithm\SentenceSplit.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Algorithm\Splitter.cs" />
     <Compile Include="Algorithm\WordSplit.cs" />
     <Compile Include="DbInterface.cs" />
     <Compile Include="Program.cs" />
