@@ -23,12 +23,13 @@ namespace TestApp1.Algorithm
                     sliceIndex++;
                     continue;
                 }
-               // Console.Out.WriteLine(slice);
+                //Console.Out.WriteLine(slice);
                // Console.Out.WriteLine(dbText.Substring(sliceIndex, 30));
                // Console.Out.WriteLine("|");
-                //Console.ReadLine();
-                String r = findPattern(dbText, slice);
                 
+                String r = findPattern(dbText, slice);
+                //Console.Out.WriteLine(r);
+                //Console.ReadLine();
                 var indexes = r.Split(';').Where(x => x != "").Select(x => Convert.ToInt32(x)).ToList();
                 //Console.Out.WriteLine(indexes.Count)
                 int skipValue = slice.Split(' ')[0].Length;

@@ -39,14 +39,17 @@ namespace TestApp1
                 ids.Add(doc["fileId"].ToString());
             }
 
-            return ids;
+            return ids.GetRange(50,50);
+            //var l = new List<string>();
+            //l.Add("d01bd720-9873-4471-a3c2-60db1ba2b9b1");
+           //return l;
         }
 
         public String GetDocument(String id)
         {
             var doc = docsRaw.GridFS.FindOne(Query.EQ("fileId", id));
             Console.Out.WriteLine("Getting " + doc.Name + " " + doc.Id );
-            StreamReader reader = new StreamReader(doc.OpenRead());
+            StreamReader reader = new StreamReader(doc.OpenRead(), Encoding.UTF8);
             var s = reader.ReadToEnd();
             //Console.Out.Write(s);
             return s;

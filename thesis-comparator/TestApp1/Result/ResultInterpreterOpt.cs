@@ -79,7 +79,7 @@ namespace TestApp1.Result
                 }
                 if (ifAddR1)
                 {
-                    result.Insert(0, r1);
+                    result.Add(r1);
                     
                 }
                 else

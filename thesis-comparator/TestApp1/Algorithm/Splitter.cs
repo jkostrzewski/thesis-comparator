@@ -14,16 +14,7 @@ namespace TestApp1.Algorithm
             String[] blacklist = { "" };
             foreach (String sentence in str.Split(stringSeparators, StringSplitOptions.RemoveEmptyEntries))
             {
-                if (!blacklist.Contains(sentence))
-                {
-                    //Console.Out.WriteLine(sentence);
                     yield return sentence;
-                }
-                else
-                {
-                    Console.Out.WriteLine("|" + sentence + "|");
-                    continue;
-                }
             }
         }
 

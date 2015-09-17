@@ -24,7 +24,7 @@ namespace TestApp1
             String compareAlgName = "SentenceSplit";
             int noThreads = 1;
             
-            DbInterface i = new DbInterface("192.168.9.103");
+            DbInterface i = new DbInterface("localhost");
             CompareAlgorithm compareAlgorithm;
             if (args.Length > 0)
             {
@@ -41,27 +41,40 @@ namespace TestApp1
             {
                 compareAlgorithm = new SentenceSplit();
             }
-            var userId = "96a74851-c445-490a-80b9-70ef719c1f6f";
-            var path = args[3];
+            var userId = "649d68f5-e0d1-4fe8-ba07-466e6fa245be";
+            //var userId = "63a169a4-f05b-4072-b747-83651eb0a0fd";
+            
+
+            var path = "";
+            if (args.Length >3 )
+            {
+                path = args[3];
+            }
             //String userText = Utils.normalizeText(Utils.getDocumentFromFile(path));
-            String userText = Utils.normalizeText(i.GetDocument(userId));
+            String userText = Utils.normalizeDbText(i.GetDocument(userId));
+            //String userText = i.GetDocument(userId);
             var jsonReport = new JsonReportBuilder(Path.GetFileName(path), userText, compareAlgName, patternAlgName, noThreads);
             ParallelOptions parallelOptions = new ParallelOptions();
             parallelOptions.MaxDegreeOfParallelism = noThreads;
             DateTime startTime = DateTime.Now;
+            int progress = 0;
+            Object progressLock = new Object();
             Parallel.ForEach (i.GetDocumentIds(), parallelOptions, id  =>{
                 if (userId == id)
                 {
                     return;
                 }
-                String dbText = Utils.normalizeText(i.GetDocument(id));
+                lock (progressLock) { progress++; }
+                Console.Out.Write(progress + " ");
+                String dbText = Utils.normalizeDbText(i.GetDocument(id));
                 String name = i.GetDocumentName(id);
                 ResultInterpreterOpt interpreter = new ResultInterpreterOpt(dbText, userText);
                 interpreter.isBenchmark = false;
-             
+                Console.Out.WriteLine("Checking");
                 interpreter = compareAlgorithm.check(interpreter, dbText, userText);
-               
+                Console.Out.WriteLine("Updating report");
                 jsonReport.AddInterpreter(name, id, interpreter);
+                Console.Out.WriteLine("Report updated");
                 
             });
             foreach (String id in i.GetDocumentIds())

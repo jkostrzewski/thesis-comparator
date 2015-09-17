@@ -15,7 +15,8 @@ namespace TestApp1.Algorithm
             int sliceIndex = 0;
             int resultIndexId = 0;
             foreach (String slice in Splitter.SplitBySentence(userText))
-            {   
+            {
+                //Console.Out.WriteLine(slice);
                 String r = findPattern(dbText, slice);
                 var indexes = r.Split(';').Where(x => x != "").Select(x => Convert.ToInt32(x)).ToList();
                 foreach (int i in indexes)
@@ -23,7 +24,8 @@ namespace TestApp1.Algorithm
                     interpreter.addIndex(resultIndexId, sliceIndex, sliceIndex + slice.Length, i, i + slice.Length);
                     resultIndexId++;
                    // Console.Out.WriteLine();
-                    //Console.Out.WriteLine(slice);
+                    
+                    
                 }
                 sliceIndex = sliceIndex + slice.Length + 2;
             }
