@@ -41,7 +41,7 @@ namespace TestApp1
             {
                 compareAlgorithm = new SentenceSplit();
             }
-            var userId = "0372e002-5bf3-445d-a851-f85ff752b5bf";
+            //var userId = "0372e002-5bf3-445d-a851-f85ff752b5bf";
             //var userId = "63a169a4-f05b-4072-b747-83651eb0a0fd";
             
 
@@ -51,7 +51,7 @@ namespace TestApp1
                 path = args[3];
             }
             //String userText = Utils.normalizeText(Utils.getDocumentFromFile(path));
-            String userText = Utils.normalizeDbText(i.GetDocument(userId));
+            String userText = Utils.normalizeDbText(i.GetDocument(path));
             Console.Out.WriteLine(userText);
             //Console.ReadKey();
             //String userText = i.GetDocument(userId);
@@ -62,7 +62,7 @@ namespace TestApp1
             int progress = 0;
             Object progressLock = new Object();
             Parallel.ForEach (i.GetDocumentIds(), parallelOptions, id  =>{
-                if (userId == id)
+                if (path == id)
                 {
                     return;
                 }
