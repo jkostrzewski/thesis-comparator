@@ -40,6 +40,7 @@ namespace TestApp1.Algorithm
             CudaDeviceVariable<byte> dev_dbText = new CudaDeviceVariable<byte>(dbTextLength * sizeof(byte));
             dev_dbText.CopyToDevice(dbTextByte, 0, 0, dbTextLength * sizeof(byte));
             int maxThreads = Math.Min(cntxt.GetDeviceInfo().MaxThreadsPerBlock, dbTextLength);
+            Console.Out.WriteLine(maxThreads);
             dim3 threads = new dim3(maxThreads, 1);
             dim3 blocks = new dim3((dbTextLength + maxThreads - 1) / maxThreads, 1);
             findWithCuda.GridDimensions = blocks;

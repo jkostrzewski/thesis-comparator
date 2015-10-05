@@ -41,7 +41,7 @@ namespace TestApp1
             {
                 compareAlgorithm = new SentenceSplit();
             }
-            var userId = "649d68f5-e0d1-4fe8-ba07-466e6fa245be";
+            var userId = "0372e002-5bf3-445d-a851-f85ff752b5bf";
             //var userId = "63a169a4-f05b-4072-b747-83651eb0a0fd";
             
 
@@ -52,6 +52,8 @@ namespace TestApp1
             }
             //String userText = Utils.normalizeText(Utils.getDocumentFromFile(path));
             String userText = Utils.normalizeDbText(i.GetDocument(userId));
+            Console.Out.WriteLine(userText);
+            //Console.ReadKey();
             //String userText = i.GetDocument(userId);
             var jsonReport = new JsonReportBuilder(Path.GetFileName(path), userText, compareAlgName, patternAlgName, noThreads);
             ParallelOptions parallelOptions = new ParallelOptions();
@@ -67,6 +69,10 @@ namespace TestApp1
                 lock (progressLock) { progress++; }
                 Console.Out.Write(progress + " ");
                 String dbText = Utils.normalizeDbText(i.GetDocument(id));
+               // Console.Out.WriteLine(dbText);
+                //Console.Out.WriteLine(userText);
+                
+                //Console.ReadKey();
                 String name = i.GetDocumentName(id);
                 ResultInterpreterOpt interpreter = new ResultInterpreterOpt(dbText, userText);
                 interpreter.isBenchmark = false;

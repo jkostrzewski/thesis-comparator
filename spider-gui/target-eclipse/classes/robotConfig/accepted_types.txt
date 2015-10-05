@@ -1,0 +1,34 @@
+{
+	items:[
+    {
+    	"ext":"*.pdf",
+        "mime":"pdf"
+        
+    },
+    {
+    	"ext":"*.txt",
+        "mime":"txt" 
+        
+    },
+     {
+    	"ext":"*.html",
+        "mime":"html"
+        
+    },
+    {
+    	"ext":"*.htm",
+        "mime":"htm"
+        
+    },
+    {
+    	"ext":"*.doc",
+        "mime":"doc"
+        
+    },
+    {
+    	"ext":"image",
+        "mime":"image"
+        
+    }
+    ]
+}

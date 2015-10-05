@@ -23,9 +23,11 @@ namespace TestApp1
         public static String normalizeDbText(String inText)
         {
             String outText = inText.ToLower();
-            outText = Regex.Replace(outText, "[ ]+", " ", RegexOptions.Compiled);
-            outText = Regex.Replace(outText, "[\r\n]+", " ", RegexOptions.Compiled);
-            outText = Regex.Replace(outText, "[^a-zA-Z0-9.():,?!+ -]+", "", RegexOptions.Compiled);
+            outText = Regex.Replace(outText, "[\\n\\t\\r]+", " ", RegexOptions.Compiled);
+            outText = Regex.Replace(outText, @"\s{2,}", " ");
+            outText = Regex.Replace(outText, "[.]+", ".", RegexOptions.Compiled);
+            outText = Regex.Replace(outText, "[^a-zA-Z0-9.\\,\\- ?!śćżółęąń]+", "");
+            outText = Regex.Replace(outText, @"\s{2,}", " ");
             return outText;
         }
 

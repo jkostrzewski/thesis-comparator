@@ -10,12 +10,13 @@ namespace TestApp1.Algorithm
     {
         public static IEnumerable<string> SplitBySentence(string str)
         {
-            string[] stringSeparators = new string[] { ". " };
+            string[] stringSeparators = new string[] { ". ", "? ", "! ", ".\n", "!\n", "?\n"  };
             String[] blacklist = { "" };
             foreach (String sentence in str.Split(stringSeparators, StringSplitOptions.RemoveEmptyEntries))
             {
                     yield return sentence;
             }
+           
         }
 
         public static IEnumerable<string> SplitByNGram(string str, int n)
@@ -25,9 +26,11 @@ namespace TestApp1.Algorithm
             var splitedString = str.Split(stringSeparators, StringSplitOptions.RemoveEmptyEntries).ToList<String>();
             for (int i = 0; i < splitedString.Count - n + 1; i++)
             {
+              //  Console.Out.WriteLine(string.Join(" ", splitedString.GetRange(i, n)));
                 yield return string.Join(" ", splitedString.GetRange(i, n));
 
             }
+            //Console.ReadKey();
 
         }
 

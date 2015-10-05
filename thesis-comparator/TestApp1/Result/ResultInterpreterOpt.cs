@@ -10,7 +10,7 @@ namespace TestApp1.Result
     {
          public List<ResultIndex> indexes {get;set;}
         private String dbText, userText;
-        public int minNoWords = 3;
+        public int minNoWords = 1;
         public bool isBenchmark = false;
 
         public ResultInterpreterOpt(String dbText, String userText)

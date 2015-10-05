@@ -12,7 +12,7 @@ namespace TestApp1.Algorithm
 
         public override ResultInterpreterOpt check(ResultInterpreterOpt interpreter, String dbText, String userText)
         {
-            int n = 3;
+            int n = 1;
             int sliceIndex = 0;
             int resultIndexId = 0;
             Console.Out.WriteLine("before search");
@@ -33,6 +33,7 @@ namespace TestApp1.Algorithm
                 var indexes = r.Split(';').Where(x => x != "").Select(x => Convert.ToInt32(x)).ToList();
                 //Console.Out.WriteLine(indexes.Count)
                 int skipValue = slice.Split(' ')[0].Length;
+
                 foreach (int i in indexes)
                 {
                     //Console.Out.WriteLine(slice);

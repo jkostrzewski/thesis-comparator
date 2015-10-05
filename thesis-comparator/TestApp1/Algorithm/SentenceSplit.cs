@@ -17,7 +17,10 @@ namespace TestApp1.Algorithm
             foreach (String slice in Splitter.SplitBySentence(userText))
             {
                 //Console.Out.WriteLine(slice);
-                String r = findPattern(dbText, slice);
+                if (slice == ""){
+                    continue;
+                }
+                String r = findPattern(dbText, slice+". ");
                 var indexes = r.Split(';').Where(x => x != "").Select(x => Convert.ToInt32(x)).ToList();
                 foreach (int i in indexes)
                 {
@@ -29,7 +32,7 @@ namespace TestApp1.Algorithm
                 }
                 sliceIndex = sliceIndex + slice.Length + 2;
             }
-            
+            //Console.ReadKey();
             interpreter.getNormalizedIndexes();
             return interpreter;
         }

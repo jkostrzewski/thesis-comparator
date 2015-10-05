@@ -1,0 +1,72 @@
+.header-container{
+	background:black;
+	color:white;
+	height:30px;
+}
+
+.header-container .header-mailto{
+	right:10%;
+	position:absolute;
+}
+
+.logo{
+	text-align:center;
+	margin-top:60px;
+	margin-bottom:110px;
+}
+
+.head-logo{
+	left:10%;
+	position:absolute;
+}
+p#web-spider-1{
+	font-size:120px;
+	line-height:120px;
+}
+p#web-spider-2{
+	font-size:60px;
+	line-height:60px;
+	margin-left:90px;
+}
+
+
+
+.container-full {
+	 margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.icon-link,
+.icon-link:hover,
+.icon-link:visited,
+.icon-link:active,
+.icon-link:focus{
+	color:white;
+}
+
+.tab-content{
+    padding: 0 34px;
+     border-left: 1px solid #EEEEEE;
+}
+
+.form-group{
+	padding: 0 8px;
+}
+
+.repo-btn{
+	width:100%;
+	margin:2px 0px;
+}
+
+.remove-repo-btn{
+	float:right;
+	margin-top:13px;
+	width:100%;
+}
+
+.orText{
+	margin:10px 0;
+	font-size: 17px;
+}

@@ -8,17 +8,15 @@ def get_word(length):
 	word = ''.join([random.choice(alphabet) for i in xrange(random.randrange(1,length))])
 	return word
 
-def main(no_words, word_length):
-	doc_list = []
-	for wi in xrange(no_words):
-		doc_list.append(get_word(word_length))
-	doc=' '.join(doc_list)
+def main(no_characters):
+	alphabet = ['a', 'a', 'a', 'b', 'b', 'b', 'c', 'c', 'c', '. ', ' ']
+	doc=''.join([random.choice(alphabet) for i in xrange(no_characters)])
 
-	filename = uuid.uuid4()
+	filename = str(uuid.uuid4())+"_"+str(no_characters)
 	f = open('test-documents/{}.txt'.format(filename), 'w+')
 	f.write(doc)
 	f.close()
 
 
 if __name__=='__main__':
-	main(int(sys.argv[1]), int(sys.argv[2]))
+	main(int(sys.argv[1]))

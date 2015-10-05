@@ -39,10 +39,10 @@ namespace TestApp1
                 ids.Add(doc["fileId"].ToString());
             }
 
-            return ids.GetRange(50,50);
-            //var l = new List<string>();
-            //l.Add("d01bd720-9873-4471-a3c2-60db1ba2b9b1");
-           //return l;
+            return ids;
+           //var l = new List<string>();
+           //l.Add("c2459a4f-cef9-493b-9108-08d0303d1b3a");
+            //return l;
         }
 
         public String GetDocument(String id)
