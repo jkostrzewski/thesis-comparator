@@ -12,7 +12,7 @@ namespace TestApp1.Algorithm
 
         public override ResultInterpreterOpt check(ResultInterpreterOpt interpreter, String dbText, String userText)
         {
-            int n = 1;
+            int n = 3;
             int sliceIndex = 0;
             int resultIndexId = 0;
             Console.Out.WriteLine("before search");

@@ -9,7 +9,7 @@ namespace TestApp1.Algorithm
 {
     class EquiWidthSkip : CompareAlgorithm
     {
-        private int width = 5;
+        private int width = 20;
         public override ResultInterpreterOpt check(ResultInterpreterOpt interpreter, String dbText, String userText)
         {
             

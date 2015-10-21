@@ -14,7 +14,7 @@ namespace TestApp1.Result
         public int dbStart { get; set; }
         public int dbEnd { get; set; }
         public Boolean active = true;
-        private int overlapFuzziness = 5; //characters
+        private int overlapFuzziness = 10; //characters
         public ResultIndex(int id, int us, int ue, int ds, int de)        
         {
             this.id = id;
